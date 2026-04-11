@@ -28,7 +28,7 @@ export const mapParsedResults = (
       });
     }
 
-    const area = map.get(key);
+    const area = map.get(key)!;
 
     if (row.gruppenart === SYSTEM_GROUP) {
       if (row.gruppenname === ELIGIBLE) {
