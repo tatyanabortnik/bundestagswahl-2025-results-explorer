@@ -1,23 +1,11 @@
 import Papa from "papaparse";
-import type { AreaType } from "../domain/types";
-
-export type ElectionCsvRow = {
-  Gebietsart: AreaType;
-  Gebietsnummer: string;
-  Gebietsname: string;
-  Gruppenart: "Partei" | "System-Gruppe";
-  Gruppenname: string;
-  Stimme: "1" | "2";
-  Anzahl: string;
-  Prozent: string;
-};
 
 interface ParseCsvOptions {
   delimiter?: string;
   skipLines?: number;
 }
 
-export function parseCsv<T = ElectionCsvRow>(
+export function parseCsv<T>(
   csvString: string,
   options: ParseCsvOptions = {},
 ): T[] {
@@ -29,6 +17,7 @@ export function parseCsv<T = ElectionCsvRow>(
     skipFirstNLines: skipLines,
     dynamicTyping: true,
     delimiter: delimiter,
+    transformHeader: (header: string) => header.toLowerCase(),
   });
 
   if (result.errors.length > 0) {

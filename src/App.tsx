@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { parseCsv, type ElectionCsvRow } from "./data/parseCsv";
+import { parseCsv } from "./data/parseCsv";
+import { transformResults } from "./domain/mapParseResult";
+import type { ElectionCsvRow } from "./domain/types";
 
 function App() {
   const [data, setData] = useState<ElectionCsvRow[]>([]);
@@ -11,8 +13,16 @@ function App() {
     async function fetchData() {
       try {
         const res = await fetch("/data/kerg2.csv");
+        if (!res.ok) {
+          throw new Error(`Failed to load CSV: ${res.status}`);
+        }
         const text = await res.text();
-        const parsed = parseCsv(text, { delimiter: ";", skipLines: 9 });
+        const parsed = parseCsv<ElectionCsvRow>(text, {
+          delimiter: ";",
+          skipLines: 9,
+        });
+        const transformed = transformResults(parsed);
+        console.log(transformed);
         setData(parsed);
       } catch (e) {
         if (e instanceof Error) console.error(e.message);
@@ -44,13 +54,13 @@ function App() {
       <tbody>
         {data.map((row, i) => (
           <tr key={i}>
-            <td>{row.Gebietsart}</td>
-            <td>{row.Gebietsnummer}</td>
-            <td>{row.Gebietsname}</td>
-            <td>{row.Gruppenname}</td>
-            <td>{row.Stimme}</td>
-            <td>{row.Anzahl}</td>
-            <td>{row.Prozent}</td>
+            <td>{row.gebietsart}</td>
+            <td>{row.gebietsnummer}</td>
+            <td>{row.gebietsname}</td>
+            <td>{row.gruppenname}</td>
+            <td>{row.stimme}</td>
+            <td>{row.anzahl}</td>
+            <td>{row.prozent}</td>
           </tr>
         ))}
       </tbody>
