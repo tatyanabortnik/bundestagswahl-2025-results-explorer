@@ -21,6 +21,7 @@ export type PartyResult = {
 export type AreaResults = {
   areaType: AreaType;
   areaName: string;
+  areaNumber: number;
   turnout: {
     eligible: number;
     voters: number;

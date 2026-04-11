@@ -7,7 +7,7 @@ const parseGermanFloat = (value: string): number => {
   return Number(value.replace(",", "."));
 };
 
-const areaKey = (row: ElectionCsvRow): string => {
+const getAreaKey = (row: ElectionCsvRow): string => {
   return `${row.gebietsart}-${row.gebietsname}`;
 };
 
@@ -17,11 +17,12 @@ export const mapParsedResults = (
   const map = new Map<string, AreaResults>();
 
   for (const row of rows) {
-    const key = areaKey(row);
+    const key = getAreaKey(row);
 
     if (!map.has(key)) {
       map.set(key, {
         areaName: row.gebietsname,
+        areaNumber: row.gebietsnummer,
         areaType: row.gebietsart,
         turnout: { eligible: 0, voters: 0, percent: 0 },
         secondVote: [],
