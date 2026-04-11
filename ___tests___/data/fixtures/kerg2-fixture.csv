@@ -1,0 +1,19 @@
+(c) Die Bundeswahlleiterin, Wiesbaden 2025;;;;;;;;;;;;;;;;
+Datenlizenz Deutschland – Namensnennung – Version 2.0 (https://www.govdata.de/dl-de/by-2-0);;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+Ergebnisse nach Wahlkreisen;;;;;;;;;;;;;;;;
+Status:;Endgültig;;;;;;;;;;;;;;;
+Stand:;14.03.2025;10:50;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+Format: CSV. Trennzeichen: Semikolon. Zeichensatz: UTF-8 mit BOM;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+Wahlart;Wahltag;Gebietsart;Gebietsnummer;Gebietsname;UegGebietsart;UegGebietsnummer;Gruppenart;Gruppenname;Gruppenreihenfolge;Stimme;Anzahl;Prozent;VorpAnzahl;VorpProzent;DiffProzent;DiffProzentPkt;Bemerkung;Gewählt
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Wahlberechtigte;-4;;60510631;;61172771;;-1,08241;;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Wählende;-3;;49928653;82,5122;46707343;76,353159;6,896796;6,159041;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Ungültige;-2;1;423264;0,847738;488483;1,045838;-13,351335;-0,1981;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Ungültige;-2;2;279141;0,55908;408956;0,875571;-31,743024;-0,316491;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Gültige;-1;1;49505389;99,152262;46218860;98,954162;7,110796;0,1981;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;System-Gruppe;Gültige;-1;2;49649512;99,44092;46298387;99,124429;7,238103;0,316491;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;Partei;SPD;1;1;9936433;20,071417;12184096;26,361741;-18,447516;-6,290324;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;Partei;SPD;1;2;8149124;16,413301;11901558;25,706204;-31,528931;-9,292903;;
+BT;23.02.2025;Bund;99;Bundesgebiet;;;Partei;CDU;2;1;12604184;25,460226;10445920;22,60099;20,661311;2,859236;;
