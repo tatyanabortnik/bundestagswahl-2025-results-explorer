@@ -11,13 +11,12 @@ const areaKey = (row: ElectionCsvRow): string => {
   return `${row.gebietsart}-${row.gebietsname}`;
 };
 
-export const transformResults = (
+export const mapParsedResults = (
   rows: ElectionCsvRow[],
 ): Map<string, AreaResults> => {
   const map = new Map<string, AreaResults>();
 
   for (const row of rows) {
-    console.log(row);
     const key = areaKey(row);
 
     if (!map.has(key)) {
