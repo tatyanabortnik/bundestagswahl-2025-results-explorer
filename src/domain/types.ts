@@ -1,5 +1,6 @@
 export type AreaType = "Bund" | "Land" | "Wahlkreis";
 export type Gruppenart = "System-Gruppe" | "Partei";
+export type ViewMode = "Nebeneinander" | "Vergleich"
 
 export type ElectionCsvRow = {
   gebietsart: AreaType;

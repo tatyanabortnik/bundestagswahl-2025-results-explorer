@@ -61,7 +61,7 @@ export const ExploreSection = () => {
         Wahlkreise
       </p>
 
-      {selectionCount === 2 && <ViewModeTabs mode={viewMode} onChange={setViewMode}/>}
+      {selectionCount === 2 && <ViewModeTabs currentMode={viewMode} onChange={setViewMode}/>}
 
       {selectionCount === 0 && <EmptyState />}
 
