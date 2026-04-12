@@ -16,6 +16,7 @@ import {
 } from "@/presentation/components/ui/command";
 import type { AreaType } from "@/domain/types";
 import { useElectionData } from "../context/ElectionDataContext";
+import { areaLabelConfig, formatAreaName } from "@/domain/utils";
 
 type AreaSearchProps = {
   selectedKey: string | undefined;
@@ -34,19 +35,6 @@ const getAreaIcon = (type: AreaType) => {
       return <Users className="size-4" />;
   }
 };
-
-const areaLabelConfig: Record<AreaType, { label: string; className: string }> =
-  {
-    Bund: { label: "Bundesgebiet", className: "border-blue-400 text-blue-400" },
-    Land: {
-      label: "Bundesland",
-      className: "border-emerald-400 text-emerald-400",
-    },
-    Wahlkreis: {
-      label: "Wahlkreis",
-      className: "border-amber-400 text-amber-400",
-    },
-  };
 
 export const AreaSearch = ({
   selectedKey,
@@ -69,8 +57,6 @@ export const AreaSearch = ({
       )
     : [];
 
-  console.log(filteredEntries);
-
   return (
     <Popover
       open={open}
@@ -85,7 +71,7 @@ export const AreaSearch = ({
           {selectedItem ?
             <div className="flex flex-1 items-center gap-2">
               {getAreaIcon(selectedItem.areaType)}
-              <span>{selectedItem.areaName}</span>
+              <span>{formatAreaName(selectedItem)}</span>
               <span
                 className={`rounded border bg-gray-100 px-1.5 py-0.5 text-xs ${areaLabelConfig[selectedItem.areaType].className}`}
               >
@@ -117,10 +103,6 @@ export const AreaSearch = ({
               <CommandEmpty>Keine Ergebnisse</CommandEmpty>
               <CommandGroup>
                 {filteredEntries.map(([key, area]) => {
-                  const areaName =
-                    area.areaType === "Wahlkreis" ?
-                      `${area.areaNumber} ${area.areaName}`
-                    : area.areaName;
                   const { areaType } = area;
                   return (
                     <CommandItem
@@ -133,7 +115,7 @@ export const AreaSearch = ({
                       }}
                     >
                       {getAreaIcon(areaType)}
-                      <span>{areaName}</span>
+                      <span>{formatAreaName(area)}</span>
                       <CommandShortcut
                         className={`text-xs border rounded p-1 ${areaLabelConfig[areaType].className}`}
                       >

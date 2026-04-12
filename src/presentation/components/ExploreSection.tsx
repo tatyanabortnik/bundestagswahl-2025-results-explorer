@@ -7,6 +7,9 @@ import { useElectionData } from "../context/ElectionDataContext";
 import { useAreaSelection } from "../hooks/useAreaSelection";
 import { LoadingState } from "./LoadingState";
 import { ErrorState } from "./ErrorState";
+import { useState } from "react";
+import type { ViewMode } from "@/domain/types";
+import { COMPARISON, SIDE_BY_SIDE } from "@/domain/constants";
 
 export const ExploreSection = () => {
   const { status } = useElectionData();
@@ -21,13 +24,14 @@ export const ExploreSection = () => {
     clearArea2,
   } = useAreaSelection();
 
-  console.log(area1Data)
+  const [viewMode, setViewMode] = useState<ViewMode>(SIDE_BY_SIDE);
+
+  console.log(area1Data);
 
   if (status === "loading") return <LoadingState />;
   if (status === "error") return <ErrorState />;
 
   const selectionCount = (area1Key ? 1 : 0) + (area2Key ? 1 : 0);
-  const viewMode = "nebeneinander";
 
   return (
     <div className="space-y-6">
@@ -57,20 +61,24 @@ export const ExploreSection = () => {
         Wahlkreise
       </p>
 
-      {selectionCount === 2 && <ViewModeTabs />}
+      {selectionCount === 2 && <ViewModeTabs mode={viewMode} onChange={setViewMode}/>}
 
       {selectionCount === 0 && <EmptyState />}
 
-      {selectionCount === 1 && <AreaPanel areaResults={area1Data || area2Data} />}
+      {selectionCount === 1 && (
+        <AreaPanel areaResults={area1Data || area2Data} />
+      )}
 
-      {area1Key && area2Key && viewMode === "nebeneinander" && (
+      {area1Key && area2Key && viewMode === SIDE_BY_SIDE && (
         <div className="grid grid-cols-2 gap-4">
-          <AreaPanel areaResults={area1Data}/>
-          <AreaPanel areaResults={area2Data}/>
+          <AreaPanel areaResults={area1Data} />
+          <AreaPanel areaResults={area2Data} />
         </div>
       )}
 
-      {selectionCount === 2 && viewMode === "vergleich" && <ComparisonView />}
+      {selectionCount === 2 && viewMode === COMPARISON && (
+        <ComparisonView area1Data={area1Data} area2Data={area2Data} />
+      )}
     </div>
   );
 };
