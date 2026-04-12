@@ -1,3 +1,4 @@
+import { PERCENTAGE, VOTES } from "@/domain/constants";
 import type { PartyResult } from "@/domain/types";
 import { toGermanNumber } from "@/domain/utils";
 import {
@@ -13,8 +14,8 @@ import {
 } from "recharts";
 
 const FIELD_LABELS: Record<string, string> = {
-  votes: "Stimmen",
-  percent: "Anteil",
+  votes: VOTES,
+  percent: PERCENTAGE,
 };
 
 //TODO: add colors to chartData in AreaPanel

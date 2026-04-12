@@ -34,7 +34,7 @@ export const AreaPanel = ({ areaResults }: { areaResults: AreaResults }) => {
         </div>
       </div>
       <ResultsChart chartData={chartData} />
-      <PartyTable />
+      <PartyTable partyData={areaResults.secondVote}/>
     </div>
   );
 };
