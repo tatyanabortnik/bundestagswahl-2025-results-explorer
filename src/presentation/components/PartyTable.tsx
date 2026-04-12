@@ -4,7 +4,6 @@ import { toGermanNumber, toGermanPercent } from "@/domain/utils";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,9 +14,7 @@ export const PartyTable = ({ partyData }: { partyData: PartyResult[] }) => {
   return (
     <>
       <h3 className="text-lg font-bold mt-1">Ergebnisse im Detail</h3>
-
       <Table>
-        <TableCaption>Ergebnisse im Detail</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>{PARTY}</TableHead>

@@ -1,4 +1,4 @@
-import { ResultsChart } from "./ResultsChart";
+import { SingularChart } from "./chart/SingularChart";
 import { PartyTable } from "./PartyTable";
 import type { AreaResults } from "@/domain/types";
 import {
@@ -8,8 +8,12 @@ import {
   toGermanPercent,
 } from "@/domain/utils";
 
-export const AreaPanel = ({ areaResults }: { areaResults: AreaResults }) => {
-  const chartData = areaResults.secondVote.filter((vote)=> vote.percent > 5);
+export const AreaResultsView = ({
+  areaResults,
+}: {
+  areaResults: AreaResults;
+}) => {
+  const chartData = areaResults.secondVote.filter((vote) => vote.percent > 5);
 
   return (
     <div className="p-4 border border-gray-700 rounded-lg space-y-4">
@@ -22,7 +26,6 @@ export const AreaPanel = ({ areaResults }: { areaResults: AreaResults }) => {
             {formatAreaName(areaResults)}
           </h3>
         </div>
-        <button className="text-gray-400">X</button>
       </div>
       <div className="flex gap-4">
         <div className="p-3 bg-gray-200 rounded">
@@ -33,8 +36,8 @@ export const AreaPanel = ({ areaResults }: { areaResults: AreaResults }) => {
           {toGermanPercent(areaResults.turnout.percent)}
         </div>
       </div>
-      <ResultsChart chartData={chartData} />
-      <PartyTable partyData={areaResults.secondVote}/>
+      <SingularChart chartData={chartData} />
+      <PartyTable partyData={areaResults.secondVote} />
     </div>
   );
 };

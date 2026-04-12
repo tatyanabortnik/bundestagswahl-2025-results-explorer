@@ -1,4 +1,4 @@
-import type { AreaResults, AreaType } from "./types";
+import type { AreaResults, AreaType, PartyResult } from "./types";
 
 export const toGermanNumber = (number: number) => {
   return Number.isFinite(number) ? number.toLocaleString("de-DE") : "";
@@ -10,17 +10,14 @@ export const toGermanPercent = (number: number) => {
     : "";
 };
 
-//TODO: change to one func ?
-// export const toGermanFormat = (number:number, type: 'number' | 'percent') =>{
-//         type === "percent"
-//           ? `${toGermanNumber(value as number)} %`
-//           : toGermanNumber(value as number),
-// }
-
 export const formatAreaName = (area: AreaResults) => {
   return area.areaType === "Wahlkreis" ?
       `${area.areaNumber} ${area.areaName}`
     : area.areaName;
+};
+
+export const filterTopVotedParties = (partyResults: PartyResult[]) => {
+  return partyResults.filter((result) => result.percent > 5);
 };
 
 export const areaLabelConfig: Record<

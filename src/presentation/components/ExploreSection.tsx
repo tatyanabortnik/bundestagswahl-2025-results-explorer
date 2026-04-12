@@ -1,8 +1,8 @@
 import { AreaSearch } from "./AreaSearch";
 import { EmptyState } from "./EmptyState";
-import { AreaPanel } from "./AreaPanel";
+import { AreaResultsView } from "./AreaResultsView";
 import { ViewModeTabs } from "./ViewModeTabs";
-import { ComparisonView } from "./ComparisonView";
+import { ComparisonChart } from "./chart/ComparisonChart";
 import { useElectionData } from "../context/ElectionDataContext";
 import { useAreaSelection } from "../hooks/useAreaSelection";
 import { LoadingState } from "./LoadingState";
@@ -31,7 +31,9 @@ export const ExploreSection = () => {
   if (status === "loading") return <LoadingState />;
   if (status === "error") return <ErrorState />;
 
-  const selectionCount = (area1Key ? 1 : 0) + (area2Key ? 1 : 0);
+  const hasNone = !area1Key && !area2Key;
+  const hasBoth = Boolean(area1Key) && Boolean(area2Key);
+  const hasOne = Boolean(area1Key) !== Boolean(area2Key);
 
   return (
     <div className="space-y-6">
@@ -61,23 +63,22 @@ export const ExploreSection = () => {
         Wahlkreise
       </p>
 
-      {selectionCount === 2 && <ViewModeTabs currentMode={viewMode} onChange={setViewMode}/>}
-
-      {selectionCount === 0 && <EmptyState />}
-
-      {selectionCount === 1 && (
-        <AreaPanel areaResults={area1Data || area2Data} />
+      {hasNone && <EmptyState />}
+      {hasBoth && (
+        <ViewModeTabs currentMode={viewMode} onChange={setViewMode} />
       )}
 
-      {area1Key && area2Key && viewMode === SIDE_BY_SIDE && (
+      {hasOne && <AreaResultsView areaResults={area1Data || area2Data} />}
+
+      {hasBoth && viewMode === SIDE_BY_SIDE && (
         <div className="grid grid-cols-2 gap-4">
-          <AreaPanel areaResults={area1Data} />
-          <AreaPanel areaResults={area2Data} />
+          <AreaResultsView areaResults={area1Data} />
+          <AreaResultsView areaResults={area2Data} />
         </div>
       )}
 
-      {selectionCount === 2 && viewMode === COMPARISON && (
-        <ComparisonView area1Data={area1Data} area2Data={area2Data} />
+      {hasBoth && viewMode === COMPARISON && (
+        <ComparisonChart area1Data={area1Data} area2Data={area2Data} />
       )}
     </div>
   );
