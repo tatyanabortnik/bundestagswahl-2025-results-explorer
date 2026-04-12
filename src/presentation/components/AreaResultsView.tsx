@@ -14,12 +14,13 @@ export const AreaResultsView = ({
   areaResults: AreaResults;
 }) => {
   const chartData = areaResults.secondVote.filter((vote) => vote.percent > 5);
-
   return (
     <div className="p-4 border border-gray-700 rounded-lg space-y-4">
       <div className="flex justify-between items-start">
         <div>
-          <span className="text-xs bg-gray-200 px-2 py-1 rounded">
+          <span
+            className={`text-xs bg-gray-100 px-2 py-1 rounded border ${areaLabelConfig[areaResults.areaType].className}`}
+          >
             {areaLabelConfig[areaResults.areaType].label}
           </span>
           <h3 className="text-lg font-bold mt-1">

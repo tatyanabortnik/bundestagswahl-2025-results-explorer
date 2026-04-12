@@ -17,9 +17,9 @@ export const PartyTable = ({ partyData }: { partyData: PartyResult[] }) => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>{PARTY}</TableHead>
-            <TableHead>{VOTES}</TableHead>
-            <TableHead>{PERCENTAGE}</TableHead>
+            <TableHead className="font-bold">{PARTY}</TableHead>
+            <TableHead className="font-bold">{VOTES}</TableHead>
+            <TableHead className="font-bold">{PERCENTAGE}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

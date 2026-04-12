@@ -69,16 +69,16 @@ export const AreaSearch = ({
         <button className="flex w-full items-center gap-2 rounded-lg border border-gray-700  px-3 py-2 text-sm text-left">
           <Search className="size-4 shrink-0 text-gray-400" />
           {selectedItem ?
-            <div className="flex flex-1 items-center gap-2">
+            <div className="flex flex-1 items-center gap-2 min-w-0">
               {getAreaIcon(selectedItem.areaType)}
-              <span>{formatAreaName(selectedItem)}</span>
+              <span className="truncate">{formatAreaName(selectedItem)}</span>
               <span
-                className={`rounded border bg-gray-100 px-1.5 py-0.5 text-xs ${areaLabelConfig[selectedItem.areaType].className}`}
+                className={`ml-auto shrink-0 rounded border bg-gray-100 px-1.5 py-0.5 text-xs ${areaLabelConfig[selectedItem.areaType].className}`}
               >
                 {areaLabelConfig[selectedItem.areaType].label}
               </span>
               <X
-                className="ml-auto size-4 text-gray-400 hover:text-white"
+                className="size-4 shrink-0 text-gray-400 hover:text-white"
                 onClick={(e) => {
                   e.stopPropagation();
                   onClear();

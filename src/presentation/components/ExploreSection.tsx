@@ -38,7 +38,7 @@ export const ExploreSection = () => {
   return (
     <div className="space-y-6">
       {/* Search bar row */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="text-sm text-gray-400 mb-1 block">Gebiet 1</label>
           <AreaSearch
@@ -71,7 +71,7 @@ export const ExploreSection = () => {
       {hasOne && <AreaResultsView areaResults={area1Data || area2Data} />}
 
       {hasBoth && viewMode === SIDE_BY_SIDE && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <AreaResultsView areaResults={area1Data} />
           <AreaResultsView areaResults={area2Data} />
         </div>
