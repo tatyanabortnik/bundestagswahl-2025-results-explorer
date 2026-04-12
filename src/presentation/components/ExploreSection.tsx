@@ -26,8 +26,6 @@ export const ExploreSection = () => {
 
   const [viewMode, setViewMode] = useState<ViewMode>(SIDE_BY_SIDE);
 
-  console.log(area1Data);
-
   if (status === "loading") return <LoadingState />;
   if (status === "error") return <ErrorState />;
 

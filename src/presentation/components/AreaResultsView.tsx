@@ -1,4 +1,4 @@
-import { SingularChart } from "./chart/SingularChart";
+import { SimpleChart } from "./chart/SimpleChart";
 import { PartyTable } from "./PartyTable";
 import type { AreaResults } from "@/domain/types";
 import {
@@ -37,7 +37,7 @@ export const AreaResultsView = ({
           {toGermanPercent(areaResults.turnout.percent)}
         </div>
       </div>
-      <SingularChart chartData={chartData} />
+      <SimpleChart chartData={chartData} />
       <PartyTable partyData={areaResults.secondVote} />
     </div>
   );

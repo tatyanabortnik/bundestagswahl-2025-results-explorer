@@ -13,9 +13,7 @@ export function useAreaSelection() {
 
   const setArea = (slot: "area1" | "area2", areaKey?: string) =>
     setSearchParams((prev) => {
-      console.log(prev);
       const newSearchParams = Object.fromEntries(prev);
-      console.log(newSearchParams);
       if (areaKey) {
         newSearchParams[slot] = areaKey;
       } else {

@@ -5,8 +5,9 @@ import {
   toGermanNumber,
   toGermanPercent,
 } from "@/domain/utils";
-import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar } from "recharts";
 import { ColoredBar, FadedColoredBar } from "./Bars";
+import { ChartWrapper } from "./ChartWrapper";
 
 type ComparisonRow = {
   party: string;
@@ -64,37 +65,18 @@ export const ComparisonChart = ({
       <p className="text-sm text-gray-500">
         {`${area1Label} vs. ${area2Label}`}
       </p>
-      <div className="mx-auto w-full max-w-3xl">
-        <BarChart
-          style={{
-            width: "100%",
-            maxHeight: "70vh",
-            aspectRatio: 1.618,
-          }}
-          responsive
-          data={comparisonData}
-          margin={{ top: 5, right: 0, left: 0, bottom: 30 }}
-        >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="party"
-          angle={-35}
-          textAnchor="end"
-          interval={0}
-          height={60}
-        />
-        <YAxis width="auto" />
-        <Tooltip
-          formatter={(percent: number, name: string, item) => {
-            const row = item.payload as ComparisonRow;
-            const votes =
-              name === "area1Percent" ? row.area1Votes : row.area2Votes;
-            return [
-              `${toGermanPercent(percent)} (${toGermanNumber(votes)} Stimmen)`,
-              seriesLabels[name],
-            ];
-          }}
-        />
+      <ChartWrapper
+        data={comparisonData}
+        tooltipFormatter={(percent: number, name, item) => {
+          const row = item.payload as ComparisonRow;
+          const votes =
+            name === "area1Percent" ? row.area1Votes : row.area2Votes;
+          return [
+            `${toGermanPercent(percent)} (${toGermanNumber(votes)} Stimmen)`,
+            seriesLabels[name],
+          ];
+        }}
+      >
         <Bar
           dataKey="area1Percent"
           name="area1Percent"
@@ -107,8 +89,7 @@ export const ComparisonChart = ({
           shape={<FadedColoredBar />}
           radius={[10, 10, 0, 0]}
         />
-        </BarChart>
-      </div>
+      </ChartWrapper>
     </>
   );
 };
