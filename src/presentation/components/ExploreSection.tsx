@@ -66,16 +66,18 @@ export const ExploreSection = () => {
         <ViewModeTabs currentMode={viewMode} onChange={setViewMode} />
       )}
 
-      {hasOne && <AreaResultsView areaResults={area1Data || area2Data} />}
+      {hasOne && (area1Data || area2Data) && (
+        <AreaResultsView areaResults={(area1Data || area2Data)!} />
+      )}
 
-      {hasBoth && viewMode === SIDE_BY_SIDE && (
+      {hasBoth && area1Data && area2Data && viewMode === SIDE_BY_SIDE && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <AreaResultsView areaResults={area1Data} />
           <AreaResultsView areaResults={area2Data} />
         </div>
       )}
 
-      {hasBoth && viewMode === COMPARISON && (
+      {hasBoth && area1Data && area2Data && viewMode === COMPARISON && (
         <ComparisonChart area1Data={area1Data} area2Data={area2Data} />
       )}
     </div>
