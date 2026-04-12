@@ -27,7 +27,8 @@ export const ExploreSection = () => {
   const [viewMode, setViewMode] = useState<ViewMode>(SIDE_BY_SIDE);
 
   if (status === "loading") return <LoadingState />;
-  if (status === "error") return <ErrorState />;
+  if (status === "error")
+    return <ErrorState onRetry={() => window.location.reload()} />;
 
   const hasNone = !area1Key && !area2Key;
   const hasBoth = Boolean(area1Key) && Boolean(area2Key);
