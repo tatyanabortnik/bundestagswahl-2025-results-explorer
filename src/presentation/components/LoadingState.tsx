@@ -1,3 +1,9 @@
+import { Loader2 } from 'lucide-react'
+
 export const LoadingState = () => {
-  return <div className="p-4 border border-dashed border-gray-600 rounded">LoadingState (spinner/skeleton)</div>;
-};
+  return (
+    <div className="flex items-center justify-center p-8 text-gray-500">
+      <Loader2 className="h-8 w-8 animate-spin" />
+    </div>
+  )
+}
