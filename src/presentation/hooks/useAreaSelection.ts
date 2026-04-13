@@ -11,6 +11,9 @@ export function useAreaSelection() {
   const area1Data = area1Key && data ? data.get(area1Key) : undefined;
   const area2Data = area2Key && data ? data.get(area2Key) : undefined;
 
+  const area1NotFound = Boolean(area1Key) && Boolean(data) && !area1Data;
+  const area2NotFound = Boolean(area2Key) && Boolean(data) && !area2Data;
+
   const setArea = (slot: "area1" | "area2", areaKey?: string) =>
     setSearchParams((prev) => {
       const newSearchParams = Object.fromEntries(prev);
@@ -32,6 +35,8 @@ export function useAreaSelection() {
     area2Key,
     area1Data,
     area2Data,
+    area1NotFound,
+    area2NotFound,
     selectArea1,
     selectArea2,
     clearArea1,

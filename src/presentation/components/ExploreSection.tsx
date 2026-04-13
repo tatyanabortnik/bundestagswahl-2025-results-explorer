@@ -18,6 +18,8 @@ export const ExploreSection = () => {
     area2Key,
     area1Data,
     area2Data,
+    area1NotFound,
+    area2NotFound,
     selectArea1,
     selectArea2,
     clearArea1,
@@ -30,9 +32,9 @@ export const ExploreSection = () => {
   if (status === "error")
     return <ErrorState onRetry={() => window.location.reload()} />;
 
-  const hasNone = !area1Key && !area2Key;
-  const hasBoth = Boolean(area1Key) && Boolean(area2Key);
-  const hasOne = Boolean(area1Key) !== Boolean(area2Key);
+  const hasNone = !area1Data && !area2Data;
+  const hasBoth = Boolean(area1Data) && Boolean(area2Data);
+  const hasOne = Boolean(area1Data) !== Boolean(area2Data);
 
   return (
     <div className="space-y-6">
@@ -62,24 +64,31 @@ export const ExploreSection = () => {
         Wahlkreise
       </p>
 
+      {(area1NotFound || area2NotFound) && (
+        <p className="text-sm text-destructive">
+          {area1NotFound && `Gebiet "${area1Key}" wurde nicht gefunden. `}
+          {area2NotFound && `Gebiet "${area2Key}" wurde nicht gefunden.`}
+        </p>
+      )}
+
       {hasNone && <EmptyState />}
       {hasBoth && (
         <ViewModeTabs currentMode={viewMode} onChange={setViewMode} />
       )}
 
-      {hasOne && (area1Data || area2Data) && (
+      {hasOne && (
         <AreaResultsView areaResults={(area1Data || area2Data)!} />
       )}
 
-      {hasBoth && area1Data && area2Data && viewMode === SIDE_BY_SIDE && (
+      {hasBoth && viewMode === SIDE_BY_SIDE && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <AreaResultsView areaResults={area1Data} />
-          <AreaResultsView areaResults={area2Data} />
+          <AreaResultsView areaResults={area1Data!} />
+          <AreaResultsView areaResults={area2Data!} />
         </div>
       )}
 
-      {hasBoth && area1Data && area2Data && viewMode === COMPARISON && (
-        <ComparisonChart area1Data={area1Data} area2Data={area2Data} />
+      {hasBoth && viewMode === COMPARISON && (
+        <ComparisonChart area1Data={area1Data!} area2Data={area2Data!} />
       )}
     </div>
   );
