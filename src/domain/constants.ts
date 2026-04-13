@@ -9,6 +9,5 @@ export const VOTERS = "Wählende";
 export const VOTES = "Stimmen";
 export const PERCENTAGE = "Anteil";
 
-export const SIDE_BY_SIDE: ViewMode = "Nebeneinander";
-export const COMPARISON: ViewMode = "Vergleich";
-
+export const SIDE_BY_SIDE: ViewMode = "Per Gebiet";
+export const COMPARISON: ViewMode = "Gebiets Vergleich";

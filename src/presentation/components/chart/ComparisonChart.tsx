@@ -60,10 +60,11 @@ export const ComparisonChart = ({
   return (
     <>
       <h3 className="text-lg font-bold mt-1">
-        Vergleich der Wahlergebnisse &gt; 5 %
+        Vergleiche die Performance per Partei in{" "}
+        {`${area1Label} vs. ${area2Label}`}
       </h3>{" "}
       <p className="text-sm text-muted-foreground">
-        {`${area1Label} vs. ${area2Label}`}
+        Vergleich der Wahlergebnisse &gt; 5 %
       </p>
       <ChartWrapper
         data={comparisonData}
