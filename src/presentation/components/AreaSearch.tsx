@@ -74,10 +74,10 @@ export const AreaSearch = ({
             : placeholder
           }
           aria-expanded={open}
-          className="flex w-full items-center gap-2 rounded-lg border border-gray-700  px-3 py-2 text-sm text-left"
+          className="flex w-full items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm text-left hover:bg-muted"
         >
           <Search
-            className="size-4 shrink-0 text-gray-400"
+            className="size-4 shrink-0 text-muted-foreground"
             aria-hidden="true"
           />
           {selectedItem ?
@@ -85,7 +85,7 @@ export const AreaSearch = ({
               {getAreaIcon(selectedItem.areaType)}
               <span className="truncate">{formatAreaName(selectedItem)}</span>
               <span
-                className={`ml-auto shrink-0 rounded border bg-gray-100 px-1.5 py-0.5 text-xs ${areaLabelConfig[selectedItem.areaType].className}`}
+                className={`ml-auto shrink-0 rounded border bg-muted px-1.5 py-0.5 text-xs ${areaLabelConfig[selectedItem.areaType].className}`}
               >
                 {areaLabelConfig[selectedItem.areaType].label}
               </span>
@@ -93,7 +93,7 @@ export const AreaSearch = ({
                 role="button"
                 tabIndex={0}
                 aria-label="Auswahl löschen"
-                className="inline-flex shrink-0 items-center justify-center text-gray-400 hover:text-gray-700"
+                className="inline-flex shrink-0 items-center justify-center text-muted-foreground hover:text-foreground"
                 onClick={(e) => {
                   e.stopPropagation();
                   onClear();
@@ -109,7 +109,7 @@ export const AreaSearch = ({
                 <X className="size-4" aria-hidden="true" />
               </span>
             </div>
-          : <span className="text-gray-500">{placeholder}</span>}
+          : <span className="text-muted-foreground">{placeholder}</span>}
         </button>
       </PopoverTrigger>
       {open && (

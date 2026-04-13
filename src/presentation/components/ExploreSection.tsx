@@ -39,7 +39,7 @@ export const ExploreSection = () => {
       {/* Search bar row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="text-sm text-gray-400 mb-1 block">Gebiet 1</label>
+          <label className="text-sm text-muted-foreground mb-1 block">Gebiet 1</label>
           <AreaSearch
             selectedKey={area1Key}
             onSelect={selectArea1}
@@ -48,7 +48,7 @@ export const ExploreSection = () => {
           />
         </div>
         <div>
-          <label className="text-sm text-gray-400 mb-1 block">Gebiet 2</label>
+          <label className="text-sm text-muted-foreground mb-1 block">Gebiet 2</label>
           <AreaSearch
             selectedKey={area2Key}
             onSelect={selectArea2}
@@ -57,7 +57,7 @@ export const ExploreSection = () => {
           />
         </div>
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-muted-foreground">
         Durchsuchen Sie das Bundesgebiet, alle 16 Bundesländer oder 299
         Wahlkreise
       </p>

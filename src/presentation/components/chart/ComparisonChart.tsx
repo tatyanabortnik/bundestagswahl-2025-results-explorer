@@ -62,7 +62,7 @@ export const ComparisonChart = ({
       <h3 className="text-lg font-bold mt-1">
         Vergleich der Wahlergebnisse &gt; 5 %
       </h3>{" "}
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-muted-foreground">
         {`${area1Label} vs. ${area2Label}`}
       </p>
       <ChartWrapper

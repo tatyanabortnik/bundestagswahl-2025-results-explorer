@@ -15,11 +15,11 @@ export const AreaResultsView = ({
 }) => {
   const chartData = areaResults.secondVote.filter((vote) => vote.percent > 5);
   return (
-    <div className="p-4 border border-gray-700 rounded-lg space-y-4">
+    <div className="p-4 border border-border rounded-lg space-y-4">
       <div className="flex justify-between items-start">
         <div>
           <span
-            className={`text-xs bg-gray-100 px-2 py-1 rounded border ${areaLabelConfig[areaResults.areaType].className}`}
+            className={`text-xs bg-muted px-2 py-1 rounded border ${areaLabelConfig[areaResults.areaType].className}`}
           >
             {areaLabelConfig[areaResults.areaType].label}
           </span>
@@ -29,10 +29,10 @@ export const AreaResultsView = ({
         </div>
       </div>
       <div className="flex gap-4">
-        <div className="p-3 bg-gray-200 rounded">
+        <div className="p-3 bg-muted rounded">
           Wahlberechtigte: {toGermanNumber(areaResults.turnout.eligible)}
         </div>
-        <div className="p-3 bg-gray-200 rounded">
+        <div className="p-3 bg-muted rounded">
           Wahlbeteiligung: {toGermanNumber(areaResults.turnout.voters)} /{" "}
           {toGermanPercent(areaResults.turnout.percent)}
         </div>
