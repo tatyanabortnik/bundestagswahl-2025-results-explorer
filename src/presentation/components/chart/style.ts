@@ -1,16 +1,16 @@
 export const PARTY_COLORS: Record<string, string> = {
-  CDU: "#000000",
-  CSU: "#0570C3",
-  SPD: "#E3000F",
-  GRÜNE: "#1FA12C",
-  FDP: "#FFED00",
-  AfD: "#009EE0",
-  "DIE LINKE": "#BE3075",
-  "Die Linke": "#BE3075",
-  BSW: "#792350",
-  "FREIE WÄHLER": "#F39200",
-  Tierschutzpartei: "#006666",
-  Volt: "#502379",
+  CDU: "var(--color-party-cdu)",
+  CSU: "var(--color-party-csu)",
+  SPD: "var(--color-party-spd)",
+  GRÜNE: "var(--color-party-gruene)",
+  FDP: "var(--color-party-fdp)",
+  AfD: "var(--color-party-afd)",
+  "DIE LINKE": "var(--color-party-linke)",
+  "Die Linke": "var(--color-party-linke)",
+  BSW: "var(--color-party-bsw)",
+  "FREIE WÄHLER": "var(--color-party-fw)",
+  Tierschutzpartei: "var(--color-party-tierschutz)",
+  Volt: "var(--color-party-volt)",
 };
 
-export const FALLBACK_COLOR = "#8884d8";
+export const FALLBACK_COLOR = "var(--color-party-fallback)";

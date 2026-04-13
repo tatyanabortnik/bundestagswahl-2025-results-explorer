@@ -46,6 +46,20 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+
+    /* Party colors */
+    --color-party-cdu: #000000;
+    --color-party-csu: #0570C3;
+    --color-party-spd: #E3000F;
+    --color-party-gruene: #1FA12C;
+    --color-party-fdp: #FFED00;
+    --color-party-afd: #009EE0;
+    --color-party-linke: #BE3075;
+    --color-party-bsw: #792350;
+    --color-party-fw: #F39200;
+    --color-party-tierschutz: #006666;
+    --color-party-volt: #502379;
+    --color-party-fallback: #8884d8;
 }
 
 :root {
