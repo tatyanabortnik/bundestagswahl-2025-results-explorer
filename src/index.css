@@ -48,7 +48,7 @@
     --radius-4xl: calc(var(--radius) * 2.6);
 
     /* Party colors */
-    --color-party-cdu: #000000;
+    --color-party-cdu: #2D3142;
     --color-party-csu: #0570C3;
     --color-party-spd: #E3000F;
     --color-party-gruene: #1FA12C;
