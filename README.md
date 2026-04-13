@@ -8,6 +8,8 @@ Here is a small React + TypeScript SPA for exploring the official results of the
 
 [bundestagswahl-2025-results-explore.vercel.app](https://bundestagswahl-2025-results-explore.vercel.app/)
 
+## Video Tour
+[https://www.loom.com/share/8a7605d0794c4cef9204c162070d85dd](https://www.loom.com/share/8a7605d0794c4cef9204c162070d85dd)
 
 ## Run locally
 
