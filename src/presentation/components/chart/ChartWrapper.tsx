@@ -18,13 +18,9 @@ export const ChartWrapper = <T,>({
   data,
   tooltipFormatter,
   children,
-  ariaLabel,
+  ariaLabel
 }: ChartWrapperProps<T>) => (
-  <div
-    className="mx-auto w-full max-w-3xl"
-    role="img"
-    aria-label={ariaLabel}
-  >
+  <div className="mx-auto w-full max-w-3xl">
     <BarChart
       style={{
         width: "100%",
@@ -34,6 +30,7 @@ export const ChartWrapper = <T,>({
       responsive
       data={data}
       margin={{ top: 5, right: 0, left: 0, bottom: 30 }}
+      aria-label={ariaLabel}
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis
