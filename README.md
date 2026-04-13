@@ -76,6 +76,7 @@ So I identify each area by `[areaType]-[areaName]` (`Land-Hamburg`, `Wahlkreis-H
 - **Comparison mode** — compare the performance of parties in different areas.
 - **Shareable URLs** — the current selection state lives in the URL.
 - **Light/dark theme toggle** — a quick solution to switch between themes.
+- **Three app states** — loading while the CSV is fetched, error on network failure or invalid area key in the URL, and empty results when no area selection has been made.  
 
 
 ## UX Decisions
@@ -93,8 +94,7 @@ So I identify each area by `[areaType]-[areaName]` (`Land-Hamburg`, `Wahlkreis-H
   2. Compare by party — show each party's performance side-by-side across both locations.
                                                                                                                                             
   I chose option 2, since highlighting how a single party performs across locations felt more insightful. Rank-based comparisons (1st, 2nd, 
-  3rd place) are already easy to read from the table. I also validated this choice with a potential user (a friend) to confirm it matched   
-  their expectations when toggling comparison mode.    
+  3rd place) are already easy to read from the table. I also validated this choice with a potential user (a friend) to confirm it matched their expectations when toggling comparison mode.    
 
 ### Table
 
@@ -127,9 +127,6 @@ A couple of tests cover the most important functionality:
 - Domain mapping — if `mapParsedResults()` correctly groups rows by a unique `areaType-areaName` key, extracts turnout data, and only considers second-vote data
 - Number formatting — checks `toGermanNumber` and `toGermanPercent` produce correctly localized German output.
 - Autocomplete filtering behaviour
-- Error states — invalid area key in URL search params, and network/loading failure of the CSV data.
-- Empty state — no results match the current selection or search query.
-- Loading state — shown while `loadElectionData()` is in flight.
 
 
 ## Left out
