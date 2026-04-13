@@ -23,7 +23,7 @@ const entries: [string, AreaResults][] = [
 ];
 
 describe("filterAreasByName", () => {
-  it("matches case-insensitively on a substring of the area name", () => {
+  it("matches a partial area-name query case-incencitively", () => {
     const result = filterAreasByName(entries, "ber");
     const names = result.map(([, area]) => area.areaName);
     expect(names).toEqual(["Berlin", "Berlin-Mitte"]);
