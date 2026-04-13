@@ -11,14 +11,20 @@ type ChartWrapperProps<T> = {
   data: T[];
   tooltipFormatter: TooltipFormatter;
   children: ReactNode;
+  ariaLabel: string;
 };
 
 export const ChartWrapper = <T,>({
   data,
   tooltipFormatter,
   children,
+  ariaLabel,
 }: ChartWrapperProps<T>) => (
-  <div className="mx-auto w-full max-w-3xl">
+  <div
+    className="mx-auto w-full max-w-3xl"
+    role="img"
+    aria-label={ariaLabel}
+  >
     <BarChart
       style={{
         width: "100%",

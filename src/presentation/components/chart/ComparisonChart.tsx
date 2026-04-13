@@ -67,6 +67,7 @@ export const ComparisonChart = ({
       </p>
       <ChartWrapper
         data={comparisonData}
+        ariaLabel={`Vergleich Zweitstimmen-Ergebnisse, ${area1Label} vs. ${area2Label}`}
         tooltipFormatter={(percent: number, name, item) => {
           const row = item.payload as ComparisonRow;
           const votes =
