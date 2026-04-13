@@ -60,14 +60,22 @@ export const AreaSearch = ({
   return (
     <Popover
       open={open}
-      onOpenChange={() => {
-        setOpen(!open);
-        setQuery("");
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (!next) setQuery("");
       }}
     >
       <PopoverTrigger asChild>
-        <button className="flex w-full items-center gap-2 rounded-lg border border-gray-700  px-3 py-2 text-sm text-left">
-          <Search className="size-4 shrink-0 text-gray-400" />
+        <button
+          type="button"
+          aria-label={placeholder}
+          aria-expanded={open}
+          className="flex w-full items-center gap-2 rounded-lg border border-gray-700  px-3 py-2 text-sm text-left"
+        >
+          <Search
+            className="size-4 shrink-0 text-gray-400"
+            aria-hidden="true"
+          />
           {selectedItem ?
             <div className="flex flex-1 items-center gap-2 min-w-0">
               {getAreaIcon(selectedItem.areaType)}
@@ -77,13 +85,25 @@ export const AreaSearch = ({
               >
                 {areaLabelConfig[selectedItem.areaType].label}
               </span>
-              <X
-                className="size-4 shrink-0 text-gray-400 hover:text-white"
+              <span
+                role="button"
+                tabIndex={0}
+                aria-label="Auswahl löschen"
+                className="inline-flex shrink-0 items-center justify-center text-gray-400 hover:text-gray-700"
                 onClick={(e) => {
                   e.stopPropagation();
                   onClear();
                 }}
-              />
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onClear();
+                  }
+                }}
+              >
+                <X className="size-4" aria-hidden="true" />
+              </span>
             </div>
           : <span className="text-gray-500">{placeholder}</span>}
         </button>

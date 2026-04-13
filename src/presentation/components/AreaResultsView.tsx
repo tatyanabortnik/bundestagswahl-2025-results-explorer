@@ -37,7 +37,7 @@ export const AreaResultsView = ({
           {toGermanPercent(areaResults.turnout.percent)}
         </div>
       </div>
-      <SimpleChart chartData={chartData} />
+      <SimpleChart chartData={chartData} areaLabel={formatAreaName(areaResults)} />
       <PartyTable partyData={areaResults.secondVote} />
     </div>
   );

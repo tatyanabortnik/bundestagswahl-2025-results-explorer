@@ -24,7 +24,7 @@ export const PartyTable = ({ partyData }: { partyData: PartyResult[] }) => {
         </TableHeader>
         <TableBody>
           {partyData.map((party) => (
-            <TableRow>
+            <TableRow key={party.party}>
               <TableCell className="font-medium">{party.party}</TableCell>
               <TableCell>{toGermanNumber(party.votes)}</TableCell>
               <TableCell>{toGermanPercent(party.percent)}</TableCell>
