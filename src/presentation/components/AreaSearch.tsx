@@ -16,7 +16,11 @@ import {
 } from "@/presentation/components/ui/command";
 import type { AreaType } from "@/domain/types";
 import { useElectionData } from "../context/ElectionDataContext";
-import { areaLabelConfig, formatAreaName } from "@/domain/utils";
+import {
+  areaLabelConfig,
+  filterAreasByName,
+  formatAreaName,
+} from "@/domain/utils";
 
 type AreaSearchProps = {
   selectedKey: string | undefined;
@@ -46,16 +50,11 @@ export const AreaSearch = ({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
 
-  const electionEntries = electionMap ? Array.from(electionMap.entries()) : [];
-
   const selectedItem = selectedKey ? electionMap?.get(selectedKey) : undefined;
 
-  const filteredEntries =
-    query ?
-      electionEntries.filter(([, area]) =>
-        area.areaName.toLowerCase().includes(query.toLowerCase()),
-      )
-    : [];
+  const electionEntries = electionMap ? Array.from(electionMap.entries()) : [];
+
+  const filteredEntries = filterAreasByName(electionEntries, query);
 
   return (
     <Popover

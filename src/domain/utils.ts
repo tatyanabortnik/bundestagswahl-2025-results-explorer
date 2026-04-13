@@ -20,6 +20,17 @@ export const filterTopVotedParties = (partyResults: PartyResult[]) => {
   return partyResults.filter((result) => result.percent > 5);
 };
 
+export const filterAreasByName = (
+  entries: [string, AreaResults][],
+  query: string,
+): [string, AreaResults][] => {
+  const trimmed = query.trim().toLowerCase();
+  if (!trimmed) return [];
+  return entries.filter(([, area]) =>
+    area.areaName.toLowerCase().includes(trimmed),
+  );
+};
+
 export const areaLabelConfig: Record<
   AreaType,
   { label: string; className: string }
