@@ -68,7 +68,11 @@ export const AreaSearch = ({
       <PopoverTrigger asChild>
         <button
           type="button"
-          aria-label={placeholder}
+          aria-label={
+            selectedItem ?
+              `Ausgewählt: ${formatAreaName(selectedItem)}, ${areaLabelConfig[selectedItem.areaType].label}`
+            : placeholder
+          }
           aria-expanded={open}
           className="flex w-full items-center gap-2 rounded-lg border border-gray-700  px-3 py-2 text-sm text-left"
         >

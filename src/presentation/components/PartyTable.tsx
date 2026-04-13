@@ -13,7 +13,7 @@ import {
 export const PartyTable = ({ partyData }: { partyData: PartyResult[] }) => {
   return (
     <>
-      <h3 className="text-lg font-bold mt-1">Ergebnisse im Detail</h3>
+      <h1 className="text-lg font-bold mt-1">Ergebnisse im Detail</h1>
       <Table>
         <TableHeader>
           <TableRow>

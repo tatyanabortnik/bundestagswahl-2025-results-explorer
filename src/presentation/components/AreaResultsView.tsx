@@ -23,9 +23,9 @@ export const AreaResultsView = ({
           >
             {areaLabelConfig[areaResults.areaType].label}
           </span>
-          <h3 className="text-lg font-bold mt-1">
+          <h1 className="text-lg font-bold mt-1">
             {formatAreaName(areaResults)}
-          </h3>
+          </h1>
         </div>
       </div>
       <div className="flex gap-4">
