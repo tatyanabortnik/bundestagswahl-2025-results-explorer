@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Search, X, Flag, MapPin, Users } from "lucide-react";
 import {
   Popover,
@@ -52,7 +52,10 @@ export const AreaSearch = ({
 
   const selectedItem = selectedKey ? electionMap?.get(selectedKey) : undefined;
 
-  const electionEntries = electionMap ? Array.from(electionMap.entries()) : [];
+  const electionEntries = useMemo(
+    () => (electionMap ? Array.from(electionMap.entries()) : []),
+    [electionMap],
+  );
 
   const filteredEntries = filterAreasByName(electionEntries, query);
 
